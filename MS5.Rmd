@@ -1,0 +1,84 @@
+---
+title: "MS5"
+author: "Kiera O'Brien"
+date: "3/20/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(haven)
+library(tidyverse)
+```
+
+
+``` {r data, include = F}
+
+# Note: each of these datasets comes with a guide for interpretation.
+# It is on the CCES website. I used it to help select useful questions.
+# https://cces.gov.harvard.edu/, under each year. 
+
+# additionally, even compressed, the datasets are too big to upload to github.
+# I tried to upload them last time, but it didn't work as anticipated.
+# for now, I have them locally. The complete files are accessible online.
+# planning to cut them down soon, but needed to pull useful questions first.
+
+# reading in Stata file of CCES 2010 data
+
+cces_2010 <- read_dta("~/Documents/Harvard/2020 Spring/Thesis/CCES/cces_2010_common_validated.dta")
+
+View(cces_2010)
+
+# reading in Stata file of CCES 2018 data
+
+cces_2018 <- read_dta("~/Downloads/cces18_common_vv.dta")
+
+View(cces_2018)
+```
+
+``` {r 2010 questions, include = F}
+
+# this block is for isolating potential questions within the 2010 dataset
+
+# creating variable; Jobs versus Environment column in 2010 data
+
+jve10 <- cces_2010$CC325
+View(jve10)
+
+# creating variable; roll call clean energy vote
+
+clean10 <- cces_2010$CC332C
+View(clean10)
+
+```
+
+``` {r 2018 questions, include = F}
+
+# this block is for isolating potential questions within the 2018 dataset
+
+# creating variable; agree/disagree with withdrawl from Paris Climate Agreement
+
+paris18 <- cces_2018$CC18_332c
+View(paris18)
+
+# creating variable; should the EPA be able to regulate carbon emissions
+
+carbonreg18 <- cces_2018$CC18_415a
+View(carbonreg18)
+
+# creating variable; on lowering fuel efficiency standards
+
+fuelstand18 <- cces_2018$CC18_415b
+View(fuelstand18)
+
+# creating variable; requiring minimum renewable portfolios by states
+
+renew18 <- cces_2018$CC18_415c
+View(renew18)
+
+# creating variable; strengthening EPA enforcement of Clean Air Act
+
+enforce18 <- cces_2018$CC18_415d
+View(enforce18)
+```
