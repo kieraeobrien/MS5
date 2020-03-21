@@ -10,6 +10,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(haven)
 library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(dplyr)
+library(vctrs)
 ```
 
 
@@ -82,3 +86,25 @@ View(renew18)
 enforce18 <- cces_2018$CC18_415d
 View(enforce18)
 ```
+
+
+``` {r plotting, echo = F}
+
+# tried to use my previously created variables
+# haven labelling is creating a massive headache
+
+# carbonreg18 <- na.omit(carbonreg18)
+
+# ccr18 <- carbonreg18 %>%
+#  as.data.frame.vector(carbonreg18, row.names = NULL)
+
+#ggplot(ccr18, aes(x = 1)) + geom_bar(mapping = NULL, data = ccr18, position = "dodge")
+```
+
+``` {r plot 2, echo = F, warning = F}
+
+ggplot(cces_2018, aes(x = cces_2018$CC18_415a)) + geom_bar(mapping = NULL, fill = "mediumseagreen", color = "mediumseagreen") + labs(title = "Should the EPA be given the power to regulate CO2 emissions?", x = "Support                                         Oppose", y = "Count", caption = "Based on data from the Cooperative Congressional Election Study, 2018") + scale_x_discrete(labels=c("1" = "Support", "2" = "Oppose"))
+
+
+```
+
